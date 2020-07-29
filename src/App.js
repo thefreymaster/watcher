@@ -7,12 +7,30 @@ import Branding from './components/Branding';
 import Blurb from './components/Blurb';
 import { isMobile } from 'react-device-detect';
 
+const TwoPercent = () => (
+  !isMobile &&
+  <Flex direction="column" style={{ borderRight: BORDER, borderLeft: BORDER }} maxWidth="2%">
+    <Flex backgroundColor="#1d1d1d" style={{ borderBottom: BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
+      <Flex style={{ borderBottom: BORDER }} width="100%" height="33%" margin={"30px 30px 30px 30px"}>
+        <Flex style={{ color: '#939393' }} maxWidth="100px">
+        </Flex>
+      </Flex>
+    </Flex>
+    <Flex backgroundColor="#1d1d1d" width="100%" height="33%">
+
+    </Flex>
+    <Flex backgroundColor="#1d1d1d" style={{ borderTop: BORDER }} width="100%" height="33%">
+
+    </Flex>
+  </Flex>
+)
+
 const App = () => {
   return (
     <Container >
       {!isMobile
         &&
-        <Flex style={{backgroundImage: STRIPES }}  direction="column" maxWidth="13%">
+        <Flex style={{ backgroundImage: STRIPES }} direction="column" maxWidth="13%">
           <Flex style={{ borderBottom: BORDER }} width="100%" height="33%">
             <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
               <Flex />
@@ -26,21 +44,8 @@ const App = () => {
           <Flex style={{ borderTop: BORDER }} width="100%" height="33%"></Flex>
         </Flex>
       }
-      <Flex direction="column" style={{ borderRight: BORDER }} maxWidth="2%">
-        <Flex backgroundColor="#1d1d1d" style={{ borderBottom: BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
-          <Flex style={{ borderBottom: BORDER }} width="100%" height="33%" margin={"30px 30px 30px 30px"}>
-            <Flex style={{ color: '#939393' }} maxWidth="100px">
-            </Flex>
-          </Flex>
-        </Flex>
-        <Flex backgroundColor="#1d1d1d" width="100%" height="33%">
-
-        </Flex>
-        <Flex backgroundColor="#1d1d1d" style={{ borderTop: BORDER }} width="100%" height="33%">
-
-        </Flex>
-      </Flex>
-      <Flex direction="column" style={{ borderRight: BORDER }} maxWidth={isMobile ? "100%" : "30%"}>
+      <TwoPercent />
+      <Flex direction="column" maxWidth={isMobile ? "100%" : "30%"}>
         <Flex style={{ borderBottom: BORDER, backgroundImage: isMobile && STRIPES }} width="100%" height={isMobile ? "25%" : "33%"}>
           {
             isMobile
@@ -65,10 +70,11 @@ const App = () => {
           {isMobile && <Blurb />}
         </Flex>
       </Flex>
+      <TwoPercent />
       {
         !isMobile
         &&
-        <Flex style={{backgroundImage: STRIPES }} direction="column" maxWidth="55%">
+        <Flex style={{ backgroundImage: STRIPES }} direction="column" maxWidth="53%">
           <Flex style={{ borderBottom: BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
             <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
               <Flex />
