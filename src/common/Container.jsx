@@ -1,13 +1,14 @@
 import React from 'react';
+import { debounce } from 'lodash';
 
 const Container = (props) => {
     const [dimensions, setDimensions] = React.useState({ height: window.innerHeight, width: window.innerWidth })
     React.useLayoutEffect(() => {
         setDimensions({ height: window.innerHeight, width: window.innerWidth })
     }, [])
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', debounce(() => {
         setDimensions({ height: window.innerHeight, width: window.innerWidth });
-    })
+    }), 1000);
     const inline = {
         display: 'flex',
         justifyContent: props.justifyContent,

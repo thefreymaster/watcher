@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Container from './common/Container';
 import Flex from './common/Flex';
-import { BORDER } from './constants';
+import { BORDER, STRIPES } from './constants';
 import Branding from './components/Branding';
 import Blurb from './components/Blurb';
 import { isMobile } from 'react-device-detect';
@@ -12,7 +12,7 @@ const App = () => {
     <Container >
       {!isMobile
         &&
-        <Flex direction="column" maxWidth="13%">
+        <Flex style={{backgroundImage: STRIPES }}  direction="column" maxWidth="13%">
           <Flex style={{ borderBottom: BORDER }} width="100%" height="33%">
             <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
               <Flex />
@@ -41,7 +41,7 @@ const App = () => {
         </Flex>
       </Flex>
       <Flex direction="column" style={{ borderRight: BORDER }} maxWidth={isMobile ? "100%" : "30%"}>
-        <Flex style={{ borderBottom: BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
+        <Flex style={{ borderBottom: BORDER, backgroundImage: isMobile && STRIPES }} width="100%" height={isMobile ? "25%" : "33%"}>
           {
             isMobile
             &&
@@ -61,14 +61,14 @@ const App = () => {
         <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
           <Branding />
         </Flex>
-        <Flex justifyContent="center" alignItems="center" width="100%" style={{ borderTop: BORDER }} height="33%">
+        <Flex justifyContent="center" alignItems="center" width="100%" style={{ borderTop: BORDER, backgroundImage: isMobile && STRIPES }} height="33%">
           {isMobile && <Blurb />}
         </Flex>
       </Flex>
       {
         !isMobile
         &&
-        <Flex direction="column" maxWidth="55%">
+        <Flex style={{backgroundImage: STRIPES }} direction="column" maxWidth="55%">
           <Flex style={{ borderBottom: BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
             <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
               <Flex />
