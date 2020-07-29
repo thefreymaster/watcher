@@ -1,14 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Container from './common/Container';
+import Flex from './common/Flex';
+import { BORDER } from './constants';
+import Branding from './components/Branding';
+import Blurb from './components/Blurb';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <Container backgroundColor="#1d1d1d">
+      <Flex direction="column" style={{ borderRight: BORDER }} maxWidth="15%">
+        <Flex style={{ borderBottom: BORDER }} width="100%" height="33%">
+
+        </Flex>
+        <Flex width="100%" height="33%">
+
+        </Flex>
+        <Flex style={{ borderTop: BORDER }} width="100%" height="33%">
+
+        </Flex>
+      </Flex>
+      <Flex direction="column" style={{ borderRight: BORDER }} maxWidth="30%">
+        <Flex style={{ borderBottom: BORDER }} width="100%" height="33%">
+
+        </Flex>
+        <Flex alignItems="center" justifyContent="center" width="100%" height="33%">
+          <Branding />
+        </Flex>
+        <Flex style={{ borderTop: BORDER }} width="100%" height="33%">
+
+        </Flex>
+      </Flex>
+      <Flex direction="column" style={{ borderRight: BORDER }} maxWidth="55%">
+        <Flex style={{ borderBottom: BORDER }} width="100%" height="33%">
+          <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
+            <Flex />
+            <Flex flexGrow />
+            <Flex style={{ color: 'white' }} maxWidth="100px" margin={"0px 30px 0px 0px"}>
+              Contact
+            </Flex>
+            <Flex style={{ color: 'white' }} maxWidth="100px">
+              Resume
+            </Flex>
+          </Flex>
+        </Flex>
+        <Flex alignItems="center" margin="0px 0px 0px 30px" width="100%" height="33%">
+          <Blurb />
+        </Flex>
+        <Flex style={{ borderTop: BORDER }} width="100%" height="33%">
+
+        </Flex>
+      </Flex>
+    </Container>
   );
 }
 

@@ -1,0 +1,1 @@
+export const BORDER = "1px solid #ffffff14";
