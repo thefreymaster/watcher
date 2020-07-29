@@ -6,6 +6,15 @@ import { BORDER, STRIPES } from './constants';
 import Branding from './components/Branding';
 import Blurb from './components/Blurb';
 import { isMobile } from 'react-device-detect';
+import Sidebar from "react-sidebar";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import {
+  AwesomeButton,
+} from 'react-awesome-button';
+import "react-awesome-button/dist/themes/theme-one.css";
+
+
 
 const TwoPercent = () => (
   !isMobile &&
@@ -25,7 +34,35 @@ const TwoPercent = () => (
   </Flex>
 )
 
+const MobileNavigation = () => {
+  return isMobile
+    &&
+    <Flex style={{ width: 200 }} direction="column" alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
+      <Flex />
+      <Flex flexGrow />
+      <Flex margin="20px">
+        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://bringhome.me">Bringhome.me</a>
+      </Flex>
+      <Flex margin="20px">
+        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
+      </Flex>
+      <Flex margin="20px">
+        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">Github</a>
+      </Flex>
+      <Flex margin="20px">
+        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
+      </Flex>
+      <Flex margin="20px">
+        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
+      </Flex>
+      {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
+    Paper
+  </Flex> */}
+    </Flex>
+}
+
 const App = () => {
+  const [sideMenuIsOpen, setSideMenuIsOpen] = React.useState(false)
   return (
     <Container >
       {!isMobile
@@ -47,20 +84,19 @@ const App = () => {
       <TwoPercent />
       <Flex direction="column" maxWidth={isMobile ? "100%" : "30%"}>
         <Flex style={{ borderBottom: BORDER, backgroundImage: isMobile && STRIPES }} width="100%" height={isMobile ? "25%" : "33%"}>
-          {
-            isMobile
+          {isMobile
             &&
-            <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-              <Flex />
-              <Flex maxWidth="100px" margin={"0px 30px 0px 0px"}>
-                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
+            <Sidebar
+              sidebar={<MobileNavigation />}
+              open={sideMenuIsOpen}
+              onSetOpen={() => setSideMenuIsOpen(false)}
+              styles={{ sidebar: { background: "#333333", transform: '100ms ease-in-out' } }}
+            >
+              <Flex margin="30px" justifyContent="flex-end">
+                <AwesomeButton ripple size='icon' onPress={() => setSideMenuIsOpen(true)} type="secondary"><FontAwesomeIcon size="sm" icon={faEllipsisV} /></AwesomeButton>
+                {/* <button onClick={() => setSideMenuIsOpen(true)}><FontAwesomeIcon icon={faEllipsisV} /></button> */}
               </Flex>
-              <Flex flexGrow />
-
-              <Flex maxWidth="100px" margin={"0px 30px 0px 0px"}>
-                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
-              </Flex>
-            </Flex>
+            </Sidebar>
           }
         </Flex>
         <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
@@ -79,16 +115,19 @@ const App = () => {
             <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
               <Flex />
               <Flex flexGrow />
-              <Flex maxWidth="100px" margin={"0px 80px 0px 0px"}>
+              <Flex>
                 <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://bringhome.me">Bringhome.me</a>
               </Flex>
-              <Flex maxWidth="100px" margin={"0px 80px 0px 0px"}>
+              <Flex>
                 <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
               </Flex>
-              <Flex maxWidth="100px" margin={"0px 30px 0px 0px"}>
+              <Flex>
+                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://github.com/thefreymaster">Github</a>
+              </Flex>
+              <Flex>
                 <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
               </Flex>
-              <Flex maxWidth="100px" margin={"0px 30px 0px 0px"}>
+              <Flex>
                 <a target="_blank" className="link" style={{ textDecoration: "none" }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
               </Flex>
               {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
