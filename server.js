@@ -11,6 +11,18 @@ if (process.env.NODE_ENV === 'production') {
     response.sendFile(path.join(__dirname, 'client/build', 'index.html'))
   })
 }
+
+const ensureSecure = (req, res, next) => {
+  const redirectURL = `https://${req.hostname}${req.url}`;
+  if (req.headers["x-forwarded-proto"] === "https" || environment === "development") {
+      return next();
+  }
+  else {
+      res.status(301).redirect(redirectURL);
+  }
+}
+app.use(ensureSecure);
+
 const port = process.env.PORT || 8080
 app.listen(port, () => {
   console.log(`API listening on port ${port}...`)
