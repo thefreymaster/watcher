@@ -36,12 +36,18 @@ const App = () => {
           <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
             <Flex />
             <Flex flexGrow />
+            <Flex style={{ color: 'white' }} maxWidth="100px" margin={"0px 80px 0px 0px"}>
+              <a target="_blank" style={{color: '#fff', textDecoration: "none"}} href="https://bringhome.me">Bringhome.me</a>
+            </Flex>
             <Flex style={{ color: 'white' }} maxWidth="100px" margin={"0px 30px 0px 0px"}>
-              Contact
+              <a target="_blank" style={{color: '#fff', textDecoration: "none"}} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
             </Flex>
-            <Flex style={{ color: 'white' }} maxWidth="100px">
-              Resume
+            <Flex style={{ color: 'white' }} maxWidth="100px" margin={"0px 30px 0px 0px"}>
+              <a target="_blank" style={{color: '#fff', textDecoration: "none"}} href="mailto:evanjfreymiller@gmail.com">Digital</a>
             </Flex>
+            {/* <Flex style={{ color: 'white' }} maxWidth="100px">
+              Paper
+            </Flex> */}
           </Flex>
         </Flex>
         <Flex alignItems="center" margin="0px 0px 0px 30px" width="100%" height="33%">

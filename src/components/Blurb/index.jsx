@@ -3,8 +3,10 @@ import Flex from '../../common/Flex';
 
 const Blurb = () => {
     return (
-        <Flex>
-            <div style={{color: '#ffffffab'}}>Full Stact Software Engineer</div>
+        <Flex direction="column">
+            <div style={{color: '#ffffffab', fontSize: 24, fontWeight: 300, fontFamily: "'Open Sans', sans-serif"}}>Full Stact Software Engineer</div>
+            <div style={{color: '#ffffffab', marginTop: 4, fontWeight: 300, fontFamily: "'Open Sans', sans-serif"}}>React/Redux Node/Express</div>
+            <div style={{color: '#ffffffab', marginTop: 4, fontWeight: 300, fontFamily: "'Open Sans', sans-serif"}}>Dreamer</div>
         </Flex>
     )
 }
