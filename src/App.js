@@ -76,6 +76,9 @@ const App = () => {
               <Flex maxWidth="100px" margin={"0px 80px 0px 0px"}>
                 <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://bringhome.me">Bringhome.me</a>
               </Flex>
+              <Flex maxWidth="100px" margin={"0px 80px 0px 0px"}>
+                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
+              </Flex>
               <Flex maxWidth="100px" margin={"0px 30px 0px 0px"}>
                 <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
               </Flex>

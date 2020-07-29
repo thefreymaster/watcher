@@ -1,13 +1,15 @@
 const express = require('express')
 const path = require('path')
 const app = express()
+const environment = app.get('env');
 
 app.use((req, res, next) => {
-  if (req.secure) {
+  console.log({ secure: req.secure })
+  if (req.secure || environment === "development") {
     next()
   }
   else {
-    res.redirect(`https://${req.headers.host}${req.url}`)
+    res.status(301).redirect(`https://${req.headers.host}${req.url}`)
   }
 })
 
@@ -20,8 +22,6 @@ if (process.env.NODE_ENV === 'production') {
     response.sendFile(path.join(__dirname, 'client/build', 'index.html'))
   })
 }
-
-
 
 const port = process.env.PORT || 8080
 app.listen(port, () => {
