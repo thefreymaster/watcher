@@ -2,16 +2,14 @@ const express = require('express')
 const path = require('path')
 const app = express()
 
-const ensureSecure = (req, res, next) => {
-  const redirectURL = `https://${req.hostname}${req.url}`;
-  if (req.headers["x-forwarded-proto"] === "https" || environment === "development") {
-      return next();
+app.use((req, res, next) => {
+  if (req.secure) {
+    next()
   }
   else {
-      res.status(301).redirect(redirectURL);
+    res.redirect(`https://${req.headers.host}${req.url}`)
   }
-}
-app.use(ensureSecure);
+})
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
@@ -22,6 +20,8 @@ if (process.env.NODE_ENV === 'production') {
     response.sendFile(path.join(__dirname, 'client/build', 'index.html'))
   })
 }
+
+
 
 const port = process.env.PORT || 8080
 app.listen(port, () => {
