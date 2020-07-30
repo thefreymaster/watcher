@@ -37,22 +37,22 @@ const TwoPercent = () => (
 const MobileNavigation = () => {
   return isMobile
     &&
-    <Flex style={{ width: 200 }} direction="column" alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
+    <Flex direction="column" alignItems="center" height="30px" width="100%">
       <Flex />
       <Flex flexGrow />
-      <Flex margin="20px">
+      <Flex style={{ width: 200 }} margin="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://bringhome.me">Bringhome.me</a>
       </Flex>
-      <Flex margin="20px">
+      <Flex style={{ width: 200 }} margin="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
       </Flex>
-      <Flex margin="20px">
+      <Flex style={{ width: 200 }} margin="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">Github</a>
       </Flex>
-      <Flex margin="20px">
+      <Flex style={{ width: 200 }} margin="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
       </Flex>
-      <Flex margin="20px">
+      <Flex style={{ width: 200 }} margin="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
       </Flex>
       {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
@@ -70,10 +70,8 @@ const App = () => {
         <Flex style={{ backgroundImage: STRIPES }} direction="column" maxWidth="13%">
           <Flex style={{ borderBottom: BORDER }} width="100%" height="33%">
             <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-              <Flex />
-              <Flex flexGrow />
-              <Flex style={{ color: '#939393' }}>
-                <div style={{ fontFamily: "'Sora', sans-serif", color: 'white' }}>EJF</div>
+              <Flex alignItems="center" style={{ color: '#939393' }}>
+                <div style={{ fontFamily: "'Sora', sans-serif", color: 'white', width: '100%', textAlign: 'center' }}>EJF</div>
               </Flex>
             </Flex>
           </Flex>
@@ -102,8 +100,9 @@ const App = () => {
         <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
           <Branding />
         </Flex>
-        <Flex justifyContent="center" alignItems="center" width="100%" style={{ borderTop: BORDER, backgroundImage: isMobile && STRIPES }} height="33%">
+        <Flex justifyContent="center" alignItems="flex-end" width="100%" style={{ borderTop: BORDER, backgroundImage: isMobile && STRIPES }} height="33%">
           {isMobile && <Blurb />}
+          {!isMobile && <div style={{ color: '#ffffff24', fontSize: 10, position: 'fixed', bottom: 10 }}>EvanFreymiller.com. Copyright 2020. All rights reserved.</div>}
         </Flex>
       </Flex>
       <TwoPercent />
