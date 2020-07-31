@@ -8,7 +8,8 @@ import Blurb from './components/Blurb';
 import { isMobile } from 'react-device-detect';
 import Sidebar from "react-sidebar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisV, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faExternalLinkAlt, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faYoutubeSquare, faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import {
   AwesomeButton,
 } from 'react-awesome-button';
@@ -43,29 +44,29 @@ const MobileNavigation = () => {
       <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://bringhome.me">Bringhome.me</a>
         <Flex flexGrow />
-        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+        <FontAwesomeIcon size="md" color="white" icon={faExternalLinkAlt} />
       </Flex>
       <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
         <Flex flexGrow />
-        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+        <FontAwesomeIcon size="md" color="white" icon={faYoutubeSquare} />
       </Flex>
       <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">Github</a>
         <Flex flexGrow />
-        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+        <FontAwesomeIcon size="md" color="white" icon={faGithubSquare} />
 
       </Flex>
       <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
         <Flex flexGrow />
-        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+        <FontAwesomeIcon size="md" color="white" icon={faLinkedin} />
 
       </Flex>
       <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
         <Flex flexGrow />
-        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+        <FontAwesomeIcon size="md" color="white" icon={faMobileAlt} />
 
       </Flex>
       {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
