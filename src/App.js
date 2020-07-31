@@ -8,7 +8,7 @@ import Blurb from './components/Blurb';
 import { isMobile } from 'react-device-detect';
 import Sidebar from "react-sidebar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import {
   AwesomeButton,
 } from 'react-awesome-button';
@@ -40,20 +40,33 @@ const MobileNavigation = () => {
     <Flex direction="column" alignItems="center" height="30px" width="100%">
       <Flex />
       <Flex flexGrow />
-      <Flex style={{ width: 200 }} margin="20px">
+      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://bringhome.me">Bringhome.me</a>
+        <Flex flexGrow />
+        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
       </Flex>
-      <Flex style={{ width: 200 }} margin="20px">
+      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
+        <Flex flexGrow />
+        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
       </Flex>
-      <Flex style={{ width: 200 }} margin="20px">
+      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">Github</a>
+        <Flex flexGrow />
+        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+
       </Flex>
-      <Flex style={{ width: 200 }} margin="20px">
+      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
+        <Flex flexGrow />
+        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+
       </Flex>
-      <Flex style={{ width: 200 }} margin="20px">
+      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
+        <Flex flexGrow />
+        <FontAwesomeIcon color="white" icon={faExternalLinkAlt} />
+
       </Flex>
       {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
     Paper
@@ -100,7 +113,7 @@ const App = () => {
         <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
           <Branding />
         </Flex>
-        <Flex justifyContent="center" alignItems="flex-end" width="100%" style={{ borderTop: BORDER, backgroundImage: isMobile && STRIPES }} height="33%">
+        <Flex justifyContent="center" alignItems={isMobile ? "center" : "flex-end"} width="100%" style={{ borderTop: BORDER, backgroundImage: isMobile && STRIPES }} height="33%">
           {isMobile && <Blurb />}
           {!isMobile && <div style={{ color: '#ffffff24', fontSize: 10, position: 'fixed', bottom: 10 }}>EvanFreymiller.com. Copyright 2020. All rights reserved.</div>}
         </Flex>
