@@ -23,7 +23,7 @@ const Flex = (props) => {
     return (
         <React.Fragment>
             <Title style={{ minHeight: props.title && 30 }}>{props.title}</Title>
-            <div style={inline}>
+            <div style={inline} onClick={props.onClick}>
                 {props.children}
             </div>
         </React.Fragment>

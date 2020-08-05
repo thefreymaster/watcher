@@ -137,37 +137,47 @@ const MobileNavigation = () => {
   return isMobile
     &&
     <Flex direction="column" alignItems="center" height={window.innerHeight} width="100%">
-      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-        <a target="_blank" className="link" style={LINKS} href="https://bringhome.me">Bringhome.me</a>
+      <a target="_blank" className="link" style={LINKS} href="https://bringhome.me">
+        <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+          Bringhome.me
         <Flex />
-        <FontAwesomeIcon size="md" color="white" icon={faExternalLinkAlt} />
-      </Flex>
-      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
+          <FontAwesomeIcon size="md" color="white" icon={faExternalLinkAlt} />
+        </Flex>
+      </a>
+      <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">
+        <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+          YouTube
         <Flex />
-        <FontAwesomeIcon size="md" color="white" icon={faYoutubeSquare} />
-      </Flex>
-      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">Github</a>
+          <FontAwesomeIcon size="md" color="white" icon={faYoutubeSquare} />
+        </Flex>
+      </a>
+      <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">
+        <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+          Github
         <Flex />
-        <FontAwesomeIcon size="md" color="white" icon={faGithubSquare} />
-      </Flex>
-      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
+          <FontAwesomeIcon size="md" color="white" icon={faGithubSquare} />
+        </Flex>
+      </a>
+      <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">
+        <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+          Social
         <Flex />
-        <FontAwesomeIcon size="md" color="white" icon={faLinkedin} />
-      </Flex>
-      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
+          <FontAwesomeIcon size="md" color="white" icon={faLinkedin} />
+        </Flex>
+      </a>
+      <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">
+        <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+          Digital
         <Flex />
-        <FontAwesomeIcon size="md" color="white" icon={faMobileAlt} />
-      </Flex>
+          <FontAwesomeIcon size="md" color="white" icon={faMobileAlt} />
+        </Flex>
+      </a>
       <Flex />
-      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderTop: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-        <div className="link" style={{ color: "white" }} onClick={() => {
-          dispatch({ type: "SET_SIDE_MENU_CLOSED" });
-          isDay ? dispatch({ type: "SET_IS_NIGHT" }) : dispatch({ type: "SET_IS_DAY" });
-        }}>Toggle Theme</div>
+      <Flex onClick={() => {
+        dispatch({ type: "SET_SIDE_MENU_CLOSED" });
+        isDay ? dispatch({ type: "SET_IS_NIGHT" }) : dispatch({ type: "SET_IS_DAY" });
+      }} flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderTop: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+        <div className="link" style={{ color: "white" }} >Toggle Theme</div>
         <Flex />
         <FontAwesomeIcon size="md" color="white" icon={faDice} />
       </Flex>
