@@ -25,6 +25,9 @@ const reducer = (state, action) => {
         case 'SET_IS_DAY':
             newState.isDay = true;
             break;
+        case 'SET_IS_NIGHT':
+            newState.isDay = false;
+            break;
         default:
             throw new Error();
     }
@@ -36,9 +39,9 @@ export const Provider = (props) => {
     console.log(state)
     React.useLayoutEffect(() => {
         const hour = new Date().getHours();
-        // if (hour >= 6 && hour <= 17) {
+        if (hour >= 6 && hour <= 17) {
             dispatch({ type: 'SET_IS_DAY' })
-        // }
+        }
     }, [])
 
     return (

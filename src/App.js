@@ -8,7 +8,7 @@ import Blurb from './components/Blurb';
 import { isMobile } from 'react-device-detect';
 import Sidebar from "react-sidebar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisV, faExternalLinkAlt, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faExternalLinkAlt, faMobileAlt, faDice } from '@fortawesome/free-solid-svg-icons';
 import { faYoutubeSquare, faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import "react-awesome-button/dist/themes/theme-one.css";
 import { Context } from "./Context";
@@ -35,7 +35,7 @@ const App = () => {
       }
       <TwoPercent />
       <Flex direction="column" maxWidth={isMobile ? "100%" : "30%"}>
-        <Flex style={{ borderBottom:  isDay ? BORDER_BRIGHT : BORDER , backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "33%"}>
+        <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER, backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "33%"}>
           {isMobile
             &&
             <Sidebar
@@ -48,7 +48,7 @@ const App = () => {
                 {/* <AwesomeButton ripple size='icon' onPress={() => setSideMenuIsOpen(true)} type="secondary"><FontAwesomeIcon size="sm" icon={faEllipsisV} /></AwesomeButton> */}
                 <FontAwesomeIcon
                   size="lg"
-                  color="white"
+                  color={isDay ? 'white' : COLOR}
                   icon={faEllipsisV}
                   onClick={() => dispatch({ type: 'SET_SIDE_MENU_OPEN' })}
                   style={{
@@ -66,7 +66,7 @@ const App = () => {
           <Branding />
         </Flex>
         <Flex justifyContent="center" alignItems={isMobile ? "center" : "flex-end"} width="100%" style={{
-          borderTop:  isDay ? BORDER_BRIGHT : BORDER ,
+          borderTop: isDay ? BORDER_BRIGHT : BORDER,
           backgroundImage: getStripes(isDay)
         }} height="33%">
           {isMobile && <Blurb />}
@@ -132,37 +132,44 @@ const TwoPercent = () => {
 }
 
 const MobileNavigation = () => {
-  const { isDay } = React.useContext(Context);
+  const { dispatch, isDay } = React.useContext(Context);
 
   return isMobile
     &&
-    <Flex direction="column" alignItems="center" height="30px" width="100%">
-      <Flex />
-      <Flex flexGrow />
-      <Flex justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+    <Flex direction="column" alignItems="center" height={window.innerHeight} width="100%">
+      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
         <a target="_blank" className="link" style={LINKS} href="https://bringhome.me">Bringhome.me</a>
-        <Flex flexGrow />
+        <Flex />
         <FontAwesomeIcon size="md" color="white" icon={faExternalLinkAlt} />
       </Flex>
-      <Flex justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
-        <Flex flexGrow />
+        <Flex />
         <FontAwesomeIcon size="md" color="white" icon={faYoutubeSquare} />
       </Flex>
-      <Flex justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">Github</a>
-        <Flex flexGrow />
+        <Flex />
         <FontAwesomeIcon size="md" color="white" icon={faGithubSquare} />
       </Flex>
-      <Flex justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
-        <Flex flexGrow />
+        <Flex />
         <FontAwesomeIcon size="md" color="white" icon={faLinkedin} />
       </Flex>
-      <Flex justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
         <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
-        <Flex flexGrow />
+        <Flex />
         <FontAwesomeIcon size="md" color="white" icon={faMobileAlt} />
+      </Flex>
+      <Flex />
+      <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderTop: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+        <div className="link" style={{ color: "white" }} onClick={() => {
+          dispatch({ type: "SET_SIDE_MENU_CLOSED" });
+          isDay ? dispatch({ type: "SET_IS_NIGHT" }) : dispatch({ type: "SET_IS_DAY" });
+        }}>Toggle Theme</div>
+        <Flex />
+        <FontAwesomeIcon size="md" color="white" icon={faDice} />
       </Flex>
       {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
     Paper
