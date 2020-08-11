@@ -9,22 +9,23 @@ const ThemeToggle = () => {
     const { dispatch, isDay } = React.useContext(Context);
 
     return (
-        <Flex justifyContent="flex-end" alignItems="flex-end"  margin="10px" className="show-zoom-animation">
-            <FontAwesomeIcon
-                size="lg"
-                color={isDay ? 'white' : COLOR}
-                icon={isDay ? faFireExtinguisher : faFire}
-                onClick={() => {
-                    isDay ? dispatch({ type: "SET_IS_NIGHT" }) : dispatch({ type: "SET_IS_DAY" });
-                }}
-                style={{
-                    padding: "10px 17px 10px 17px",
-                    backgroundColor: isDay ? COLOR : COLOR_BRIGHT,
-                    borderRadius: 100,
-                }}
-                className="navigation-button"
-            />
-        </Flex>
+        <FontAwesomeIcon
+            size="lg"
+            color={isDay ? 'white' : COLOR}
+            icon={isDay ? faFireExtinguisher : faFire}
+            onClick={() => {
+                isDay ? dispatch({ type: "SET_IS_NIGHT" }) : dispatch({ type: "SET_IS_DAY" });
+            }}
+            style={{
+                padding: "10px 17px 10px 17px",
+                backgroundColor: isDay ? COLOR : COLOR_BRIGHT,
+                borderRadius: 100,
+                position: 'absolute',
+                bottom: '50px',
+                right: '50px',
+            }}
+            className="navigation-button show-zoom-animation"
+        />
     )
 }
 
