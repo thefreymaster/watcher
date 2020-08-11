@@ -9,7 +9,7 @@ const ThemeToggle = () => {
     const { dispatch, isDay } = React.useContext(Context);
 
     return (
-        <Flex justifyContent="flex-end" alignItems="flex-end"  margin="10px">
+        <Flex justifyContent="flex-end" alignItems="flex-end"  margin="10px" className="show-zoom-animation">
             <FontAwesomeIcon
                 size="lg"
                 color={isDay ? 'white' : COLOR}

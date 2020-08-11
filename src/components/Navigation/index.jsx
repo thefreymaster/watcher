@@ -15,15 +15,15 @@ const icons = {
 export const Desktop = () => {
     const { isDay, links } = React.useContext(Context);
     return (
-        <React.Fragment>
+        <Flex className="show-zoom-animation">
             <Flex />
             <Flex flexGrow />
             {links.map(link => (
                 <Flex>
-                    <a key={link.href}  target="_blank" className={isDay ? "link-bright" : "link"} style={{ textDecoration: "none" }} href={link.href}>{link.title}</a>
+                    <a key={link.href} target="_blank" className={isDay ? "link-bright" : "link"} style={{ textDecoration: "none" }} href={link.href}>{link.title}</a>
                 </Flex>
             ))}
-        </React.Fragment>
+        </Flex>
     )
 }
 
@@ -37,7 +37,7 @@ export const Mobile = () => {
                 onSetOpen={() => dispatch({ type: "SET_SIDE_MENU_CLOSED" })}
                 styles={{ sidebar: { background: "#333333", transform: '100ms ease-in-out' } }}
             >
-                <Flex margin="30px" justifyContent="flex-end">
+                <Flex className="show-zoom-animation" margin="30px" justifyContent="flex-end" >
                     <FontAwesomeIcon
                         size="lg"
                         color={isDay ? 'white' : COLOR}
@@ -78,7 +78,7 @@ const Content = (props) => {
                 dispatch({ type: "SET_SIDE_MENU_CLOSED" });
                 isDay ? dispatch({ type: "SET_IS_NIGHT" }) : dispatch({ type: "SET_IS_DAY" });
             }} flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderTop: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-                <div className="link" style={{ color: "white" }} >Toggle Theme</div>
+                <div className="link" style={{ color: "white" }} >{isDay ? "Dark" : "Bright"}</div>
                 <Flex />
                 <FontAwesomeIcon size="md" color="white" icon={faDice} />
             </Flex>

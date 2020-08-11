@@ -55,7 +55,7 @@ const App = () => {
           <VerticalBar />
           <Flex direction="column" maxWidth={isMobile ? "100%" : "30%"}>
             <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER, backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "33%"}>
-              <Navigation.Mobile />
+              {!delay && <Navigation.Mobile />}
             </Flex>
             <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
               <Branding />
@@ -75,14 +75,14 @@ const App = () => {
             <Flex style={{ backgroundImage: isDay ? STRIPES_BRIGHT : STRIPES }} direction="column" maxWidth="53%">
               <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
                 <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-                  <Navigation.Desktop />
+                  {!delay && <Navigation.Desktop />}
                 </Flex>
               </Flex>
               <Flex justifyContent="center" alignItems="center" width="100%" height="33%">
                 <Blurb />
               </Flex>
               <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%">
-                <ThemeToggle />
+                {!delay && <ThemeToggle />}
               </Flex>
             </Flex>
           }
