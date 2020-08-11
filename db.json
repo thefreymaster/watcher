@@ -4,32 +4,38 @@
       {
         "href": "https://bringhome.me",
         "title": "Bringhome.me",
-        "icon": "faExternalLinkAlt"
+        "icon": "faExternalLinkAlt",
+        "active": true
       },
       {
         "href": "https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ",
         "title": "YouTube",
-        "icon": "faYoutubeSquare"
+        "icon": "faYoutubeSquare",
+        "active": true
       },
       {
         "href": "https://github.com/thefreymaster",
         "title": "Github",
-        "icon": "faGithubSquare"
+        "icon": "faGithubSquare",
+        "active": true
       },
       {
         "href": "https://www.linkedin.com/in/evanfreymiller/",
         "title": "Social",
-        "icon": "faLinkedin"
+        "icon": "faLinkedin",
+        "active": true
       },
       {
         "href": "mailto:evanjfreymiller@gmail.com",
         "title": "Digital",
-        "icon": "faMobileAlt"
+        "icon": "faMobileAlt",
+        "active": true
       },
       {
-        "href": "https://bringhome.me",
+        "href": "https://evanfreymiller.s3.amazonaws.com/evanfreymiller2020resume.pdf",
         "title": "Paper",
-        "icon": "faFile"
+        "icon": "faFile",
+        "active": false
       }
     ],
     "blurb": {

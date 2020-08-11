@@ -18,11 +18,16 @@ export const Desktop = () => {
         <Flex className="show-zoom-animation">
             <Flex />
             <Flex flexGrow />
-            {links.map(link => (
-                <Flex>
-                    <a key={link.href} target="_blank" className={isDay ? "link-bright" : "link"} style={{ textDecoration: "none" }} href={link.href}>{link.title}</a>
-                </Flex>
-            ))}
+            {links.map(link => {
+                if (link.active) {
+                    return (
+                        <Flex>
+                            <a key={link.href} target="_blank" className={isDay ? "link-bright" : "link"} style={{ textDecoration: "none" }} href={link.href}>{link.title}</a>
+                        </Flex>
+                    )
+                }
+                return null;
+            })}
         </Flex>
     )
 }
@@ -64,15 +69,18 @@ const Content = (props) => {
     return isMobile
         &&
         <Flex direction="column" alignItems="center" height={window.innerHeight} width="100%">
-            {links.map(link => (
-                <a key={link.href} target="_blank" className="link" style={LINKS} href={link.href}>
-                    <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
-                        {link.title}
-                        <Flex />
-                        <FontAwesomeIcon size="md" color="white" icon={icons[link.icon]} />
-                    </Flex>
-                </a>
-            ))}
+            {links.map(link => {
+                if (link.active) {
+                    return (<a key={link.href} target="_blank" className="link" style={LINKS} href={link.href}>
+                        <Flex flexGrow="none" justifyContent="center" alignItems="center" style={{ width: 200, borderBottom: isDay ? BORDER_BRIGHT : BORDER }} padding="20px">
+                            {link.title}
+                            <Flex />
+                            <FontAwesomeIcon size="md" color="white" icon={icons[link.icon]} />
+                        </Flex>
+                    </a>)
+                }
+                return null;
+            })}
             <Flex />
             <Flex onClick={() => {
                 dispatch({ type: "SET_SIDE_MENU_CLOSED" });
