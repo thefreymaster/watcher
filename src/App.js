@@ -75,14 +75,14 @@ const App = () => {
             <Flex style={{ backgroundImage: isDay ? STRIPES_BRIGHT : STRIPES }} direction="column" maxWidth="53%">
               <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
                 <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-                  {!delay && <Navigation.Desktop />}
+                  <Navigation.Desktop />
                 </Flex>
               </Flex>
               <Flex justifyContent="center" alignItems="center" width="100%" height="33%">
                 <Blurb />
               </Flex>
               <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%">
-                {!delay && <ThemeToggle />}
+              {!delay && <ThemeToggle />}
               </Flex>
             </Flex>
           }

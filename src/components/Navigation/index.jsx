@@ -15,7 +15,7 @@ const icons = {
 export const Desktop = () => {
     const { isDay, links } = React.useContext(Context);
     return (
-        <Flex className="show-zoom-animation">
+        <Flex>
             <Flex />
             <Flex flexGrow />
             {links.map(link => {
@@ -42,7 +42,7 @@ export const Mobile = () => {
                 onSetOpen={() => dispatch({ type: "SET_SIDE_MENU_CLOSED" })}
                 styles={{ sidebar: { background: "#333333", transform: '100ms ease-in-out' } }}
             >
-                <Flex className="show-zoom-animation" margin="30px" justifyContent="flex-end" >
+                <Flex margin="30px" justifyContent="flex-end" >
                     <FontAwesomeIcon
                         size="lg"
                         color={isDay ? 'white' : COLOR}
