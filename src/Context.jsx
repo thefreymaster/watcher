@@ -1,10 +1,13 @@
 import React from 'react';
+import Axios from 'axios';
+import { getInfo } from './api';
 
 const dayStyle = {
     color: "#1a1a1a"
 }
 
 const defaultState = {
+    fetching: true,
     sideMenuIsOpen: false,
     isDay: false,
     style: {}
@@ -14,8 +17,15 @@ export const Context = React.createContext(defaultState);
 
 const reducer = (state, action) => {
     const newState = { ...state };
+    const { payload } = action;
 
     switch (action.type) {
+        case 'POPULATE_INFO':
+            newState.blurb = payload.blurb;
+            newState.brand = payload.brand;
+            newState.links = payload.links;
+            newState.fetching = false;
+            break;
         case 'SET_SIDE_MENU_OPEN':
             newState.sideMenuIsOpen = true;
             break;
@@ -42,6 +52,7 @@ export const Provider = (props) => {
         if (hour >= 6 && hour <= 17) {
             dispatch({ type: 'SET_IS_DAY' })
         }
+        getInfo(dispatch);
     }, [])
 
     return (

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import * as Context from "./Context";
+import "react-awesome-button/dist/themes/theme-one.css";
 
 ReactDOM.render(
     <Context.Provider>

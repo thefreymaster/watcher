@@ -1,0 +1,7 @@
+.slide-out{
+    transition: transform 3s ease-in-out;
+    transform: translateY(-10000px);
+}
+.top{
+    z-index: 2;
+}

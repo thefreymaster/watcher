@@ -1,0 +1,44 @@
+{
+  "info": {
+    "links": [
+      {
+        "href": "https://bringhome.me",
+        "title": "Bringhome.me",
+        "icon": "faExternalLinkAlt"
+      },
+      {
+        "href": "https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ",
+        "title": "YouTube",
+        "icon": "faYoutubeSquare"
+      },
+      {
+        "href": "https://github.com/thefreymaster",
+        "title": "Github",
+        "icon": "faGithubSquare"
+      },
+      {
+        "href": "https://www.linkedin.com/in/evanfreymiller/",
+        "title": "Social",
+        "icon": "faLinkedin"
+      },
+      {
+        "href": "mailto:evanjfreymiller@gmail.com",
+        "title": "Digital",
+        "icon": "faMobileAlt"
+      },
+      {
+        "href": "https://bringhome.me",
+        "title": "Paper",
+        "icon": "faFile"
+      }
+    ],
+    "blurb": {
+      "title": "FULL STACK",
+      "skills": "REACT • REDUX • NODE • EXPRESS",
+      "attributes": "DREAMER"
+    },
+    "brand": {
+      "title": "EJF"
+    }
+  }
+}
