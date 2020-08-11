@@ -2,162 +2,112 @@ import React from 'react';
 import './App.css';
 import Container from './common/Container';
 import Flex from './common/Flex';
-import { BORDER, STRIPES } from './constants';
+import { BORDER, BORDER_BRIGHT, STRIPES, STRIPES_BRIGHT, COLOR_2_PERCENT_BRIGHT, COLOR_2_PERCENT } from './constants';
 import Branding from './components/Branding';
 import Blurb from './components/Blurb';
 import { isMobile } from 'react-device-detect';
-import Sidebar from "react-sidebar";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisV, faExternalLinkAlt, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
-import { faYoutubeSquare, faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import {
-  AwesomeButton,
-} from 'react-awesome-button';
-import "react-awesome-button/dist/themes/theme-one.css";
-
-
-
-const TwoPercent = () => (
-  !isMobile &&
-  <Flex direction="column" style={{ borderRight: BORDER, borderLeft: BORDER }} maxWidth="2%">
-    <Flex backgroundColor="#1d1d1d" style={{ borderBottom: BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
-      <Flex style={{ borderBottom: BORDER }} width="100%" height="33%" margin={"30px 30px 30px 30px"}>
-        <Flex style={{ color: '#939393' }} maxWidth="100px">
-        </Flex>
-      </Flex>
-    </Flex>
-    <Flex backgroundColor="#1d1d1d" width="100%" height="33%">
-
-    </Flex>
-    <Flex backgroundColor="#1d1d1d" style={{ borderTop: BORDER }} width="100%" height="33%">
-
-    </Flex>
-  </Flex>
-)
-
-const MobileNavigation = () => {
-  return isMobile
-    &&
-    <Flex direction="column" alignItems="center" height="30px" width="100%">
-      <Flex />
-      <Flex flexGrow />
-      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://bringhome.me">Bringhome.me</a>
-        <Flex flexGrow />
-        <FontAwesomeIcon size="md" color="white" icon={faExternalLinkAlt} />
-      </Flex>
-      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
-        <Flex flexGrow />
-        <FontAwesomeIcon size="md" color="white" icon={faYoutubeSquare} />
-      </Flex>
-      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://github.com/thefreymaster">Github</a>
-        <Flex flexGrow />
-        <FontAwesomeIcon size="md" color="white" icon={faGithubSquare} />
-
-      </Flex>
-      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
-        <Flex flexGrow />
-        <FontAwesomeIcon size="md" color="white" icon={faLinkedin} />
-
-      </Flex>
-      <Flex style={{ width: 200, borderBottom: BORDER }} padding="20px">
-        <a target="_blank" className="link" style={{ textDecoration: "none", color: 'white' }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
-        <Flex flexGrow />
-        <FontAwesomeIcon size="md" color="white" icon={faMobileAlt} />
-
-      </Flex>
-      {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
-    Paper
-  </Flex> */}
-    </Flex>
-}
+import { Context } from "./Context";
+import { getStripes } from './utils';
+import * as Navigation from './components/Navigation';
+import Loader from './components/Loader';
+import Zindex from './common/Zindex';
+import Title from './components/Title';
+import ThemeToggle from './components/ThemeToggle';
 
 const App = () => {
-  const [sideMenuIsOpen, setSideMenuIsOpen] = React.useState(false)
+  const { fetching, isDay } = React.useContext(Context);
+
+  const [delay, setDelay] = React.useState(true);
+  const [isExiting, setIsExiting] = React.useState(false);
+
+
+  setTimeout(() => {
+    setIsExiting(true);
+    setTimeout(() => {
+      setDelay(false)
+    }, 1500);
+  }, 1000);
+
+  if (fetching) {
+    return <Container />
+  }
   return (
-    <Container >
-      {!isMobile
-        &&
-        <Flex style={{ backgroundImage: STRIPES }} direction="column" maxWidth="13%">
-          <Flex style={{ borderBottom: BORDER }} width="100%" height="33%">
-            <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-              <Flex alignItems="center" style={{ color: '#939393' }}>
-                <div style={{ fontFamily: "'Sora', sans-serif", color: 'white', width: '100%', textAlign: 'center' }}>EJF</div>
+    <React.Fragment>
+      <Zindex zIndex={2}>
+        <Loader delayedHide={delay} isExiting={isExiting} />
+      </Zindex>
+      <Zindex zIndex={1}>
+        <Container>
+          {!isMobile
+            &&
+            <Flex style={{ backgroundImage: !isMobile && isDay ? STRIPES_BRIGHT : STRIPES }} direction="column" maxWidth="13%">
+              <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%">
+                <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
+                  <Flex alignItems="center" style={{ color: '#939393' }}>
+                    <Title />
+                  </Flex>
+                </Flex>
               </Flex>
+              <Flex width="100%" height="33%"></Flex>
+              <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%"></Flex>
+            </Flex>
+          }
+          <VerticalBar />
+          <Flex direction="column" maxWidth={isMobile ? "100%" : "30%"}>
+            <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER, backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "33%"}>
+              {!delay && <Navigation.Mobile />}
+            </Flex>
+            <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
+              <Branding />
+            </Flex>
+            <Flex justifyContent="center" alignItems={isMobile ? "center" : "flex-end"} width="100%" style={{
+              borderTop: isDay ? BORDER_BRIGHT : BORDER,
+              backgroundImage: getStripes(isDay)
+            }} height="33%">
+              {isMobile && <Blurb />}
+              {!isMobile && !delay && <div style={{ color: '#ffffff24', fontSize: 10, position: 'fixed', bottom: 10 }}>EvanFreymiller.com. Copyright 2020. All rights reserved.</div>}
             </Flex>
           </Flex>
-          <Flex width="100%" height="33%"></Flex>
-          <Flex style={{ borderTop: BORDER }} width="100%" height="33%"></Flex>
-        </Flex>
-      }
-      <TwoPercent />
-      <Flex direction="column" maxWidth={isMobile ? "100%" : "30%"}>
-        <Flex style={{ borderBottom: BORDER, backgroundImage: isMobile && STRIPES }} width="100%" height={isMobile ? "25%" : "33%"}>
-          {isMobile
+          <VerticalBar />
+          {
+            !isMobile
             &&
-            <Sidebar
-              sidebar={<MobileNavigation />}
-              open={sideMenuIsOpen}
-              onSetOpen={() => setSideMenuIsOpen(false)}
-              styles={{ sidebar: { background: "#333333", transform: '100ms ease-in-out' } }}
-            >
-              <Flex margin="30px" justifyContent="flex-end">
-                <AwesomeButton ripple size='icon' onPress={() => setSideMenuIsOpen(true)} type="secondary"><FontAwesomeIcon size="sm" icon={faEllipsisV} /></AwesomeButton>
-                {/* <button onClick={() => setSideMenuIsOpen(true)}><FontAwesomeIcon icon={faEllipsisV} /></button> */}
+            <Flex style={{ backgroundImage: isDay ? STRIPES_BRIGHT : STRIPES }} direction="column" maxWidth="53%">
+              <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
+                <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
+                  <Navigation.Desktop />
+                </Flex>
               </Flex>
-            </Sidebar>
+              <Flex justifyContent="center" alignItems="center" width="100%" height="33%">
+                <Blurb />
+              </Flex>
+              <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%">
+              {!delay && <ThemeToggle />}
+              </Flex>
+            </Flex>
           }
-        </Flex>
-        <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
-          <Branding />
-        </Flex>
-        <Flex justifyContent="center" alignItems={isMobile ? "center" : "flex-end"} width="100%" style={{ borderTop: BORDER, backgroundImage: isMobile && STRIPES }} height="33%">
-          {isMobile && <Blurb />}
-          {!isMobile && <div style={{ color: '#ffffff24', fontSize: 10, position: 'fixed', bottom: 10 }}>EvanFreymiller.com. Copyright 2020. All rights reserved.</div>}
+        </Container >
+      </Zindex>
+
+    </React.Fragment>
+  );
+}
+
+const VerticalBar = () => {
+  const { isDay } = React.useContext(Context);
+  return (
+    !isMobile &&
+    <Flex direction="column" style={{ borderRight: isDay ? BORDER_BRIGHT : BORDER, borderLeft: isDay ? BORDER_BRIGHT : BORDER }} maxWidth="2%">
+      <Flex backgroundColor={isDay ? COLOR_2_PERCENT_BRIGHT : COLOR_2_PERCENT} style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
+        <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%" margin={"30px 30px 30px 30px"}>
+          <Flex style={{ color: '#939393' }} maxWidth="100px">
+          </Flex>
         </Flex>
       </Flex>
-      <TwoPercent />
-      {
-        !isMobile
-        &&
-        <Flex style={{ backgroundImage: STRIPES }} direction="column" maxWidth="53%">
-          <Flex style={{ borderBottom: BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
-            <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-              <Flex />
-              <Flex flexGrow />
-              <Flex>
-                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://bringhome.me">Bringhome.me</a>
-              </Flex>
-              <Flex>
-                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ">YouTube</a>
-              </Flex>
-              <Flex>
-                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://github.com/thefreymaster">Github</a>
-              </Flex>
-              <Flex>
-                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="https://www.linkedin.com/in/evanfreymiller/">Social</a>
-              </Flex>
-              <Flex>
-                <a target="_blank" className="link" style={{ textDecoration: "none" }} href="mailto:evanjfreymiller@gmail.com">Digital</a>
-              </Flex>
-              {/* <Flex style={{ color: '#939393' }} maxWidth="100px">
-              Paper
-            </Flex> */}
-            </Flex>
-          </Flex>
-          <Flex justifyContent="center" alignItems="center" width="100%" height="33%">
-            <Blurb />
-          </Flex>
-          <Flex style={{ borderTop: BORDER }} width="100%" height="33%">
-
-          </Flex>
-        </Flex>
-      }
-    </Container >
-  );
+      <Flex backgroundColor={isDay ? COLOR_2_PERCENT_BRIGHT : COLOR_2_PERCENT} width="100%" height="33%" />
+      <Flex backgroundColor={isDay ? COLOR_2_PERCENT_BRIGHT : COLOR_2_PERCENT} style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%" />
+    </Flex>
+  )
 }
 
 export default App;

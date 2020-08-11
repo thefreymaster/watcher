@@ -1,14 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
+import './branding.css';
 
-const Branding = () => {
+const Branding = (props) => {
     const inline = {
         fontFamily: "'Sora', sans-serif",
-        color: 'white',
         fontSize: 150,
         letterSpacing: -10,
     }
     return (
-        <div className="text-color-animation" style={inline}>
+        <div className={classNames("text-color-animation", {"text-color-animation-fast": props.fastAnimation})} style={inline}>
             EJF
         </div>
     )

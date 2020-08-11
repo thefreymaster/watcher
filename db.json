@@ -1,0 +1,50 @@
+{
+  "info": {
+    "links": [
+      {
+        "href": "https://bringhome.me",
+        "title": "Bringhome.me",
+        "icon": "faExternalLinkAlt",
+        "active": true
+      },
+      {
+        "href": "https://www.youtube.com/channel/UC1nF2hzsIfDu-cpum80GFJQ",
+        "title": "YouTube",
+        "icon": "faYoutubeSquare",
+        "active": true
+      },
+      {
+        "href": "https://github.com/thefreymaster",
+        "title": "Github",
+        "icon": "faGithubSquare",
+        "active": true
+      },
+      {
+        "href": "https://www.linkedin.com/in/evanfreymiller/",
+        "title": "Social",
+        "icon": "faLinkedin",
+        "active": true
+      },
+      {
+        "href": "mailto:evanjfreymiller@gmail.com",
+        "title": "Digital",
+        "icon": "faMobileAlt",
+        "active": true
+      },
+      {
+        "href": "https://evanfreymiller.s3.amazonaws.com/evanfreymiller2020resume.pdf",
+        "title": "Paper",
+        "icon": "faFile",
+        "active": false
+      }
+    ],
+    "blurb": {
+      "title": "FULL STACK",
+      "skills": "REACT • REDUX • NODE • EXPRESS",
+      "attributes": "DREAMER"
+    },
+    "brand": {
+      "title": "EJF"
+    }
+  }
+}
