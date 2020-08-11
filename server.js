@@ -6,6 +6,7 @@ const axios = require('axios');
 
 const BASE_URL = "https://evanfreymiller-2020.firebaseio.com/";
 
+app.use(express.static(__dirname + '/build'));
 app.use((req, res, next) => {
   console.log({ secure: req.secure })
   if (req.headers["x-forwarded-proto"] === "https" || environment === "development") {
@@ -22,9 +23,10 @@ if (process.env.NODE_ENV === 'production') {
   app.set('x-powered-by', false);
   // Handle React routing, return all requests to React app
   app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+    response.sendFile(path.join(__dirname, '/build', 'index.html'))
   })
 }
+
 
 app.get('/api/info', (req, res) => {
   axios.get(`${BASE_URL}/info.json`).then((response) => {
