@@ -14,6 +14,7 @@ import Zindex from './common/Zindex';
 import Title from './components/Title';
 import ThemeToggle from './components/ThemeToggle';
 import Viewer from './components/Viewer';
+import * as Card from './common/Card';
 
 const App = () => {
   const { fetching, isDay } = React.useContext(Context);
@@ -21,7 +22,10 @@ const App = () => {
   const [delay, setDelay] = React.useState(true);
   const [isExiting, setIsExiting] = React.useState(false);
 
-  const viewerRef = React.createRef();
+  const viewerRefLT = React.createRef();
+  const viewerRefRT = React.createRef();
+  const viewerRefLB = React.createRef();
+  const viewerRefRB = React.createRef();
 
   setTimeout(() => {
     setIsExiting(true);
@@ -58,37 +62,41 @@ const App = () => {
           }
           <VerticalBar />
           <Flex direction="column" maxWidth={isMobile ? "100%" : "43%"}>
-            <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER, backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "33%"}>
-              <Viewer ref={viewerRef} port={9999} />
+            <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER, backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "50%"}>
+              <Card.Container>
+                <Card.Title>Living Room</Card.Title>
+                <Card.Body>
+                  <Viewer ref={viewerRefLT} port={9998} />
+                </Card.Body>
+              </Card.Container>
             </Flex>
-            <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
-              <Viewer ref={viewerRef} port={9998} />
-            </Flex>
-            <Flex justifyContent="center" alignItems={isMobile ? "center" : "flex-end"} width="100%" style={{
-              borderTop: isDay ? BORDER_BRIGHT : BORDER,
-              backgroundImage: getStripes(isDay)
-            }} height="33%">
-              {!isMobile && !delay && <div style={{ color: '#ffffff24', fontSize: 10, position: 'fixed', bottom: 10 }}>EvanFreymiller.com. Copyright 2020. All rights reserved.</div>}
+            <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "50%"}>
+              <Card.Container>
+                <Card.Title>Side Gate</Card.Title>
+                <Card.Body>
+                  {/* <Viewer ref={viewerRefLB} port={9998} /> */}
+                </Card.Body>
+              </Card.Container>
             </Flex>
           </Flex>
-          <VerticalBar />
-          {
-            !isMobile
-            &&
-            <Flex direction="column" maxWidth="43%">
-              <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
-                <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-
-                </Flex>
-              </Flex>
-              <Flex justifyContent="center" alignItems="center" width="100%" height="33%">
-
-              </Flex>
-              <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%">
-
-              </Flex>
+          <Flex direction="column" maxWidth={isMobile ? "100%" : "43%"}>
+            <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER, backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "50%"}>
+              <Card.Container>
+                <Card.Title>Back Yard</Card.Title>
+                <Card.Body>
+                  {/* <Viewer ref={viewerRefLT} port={9998} /> */}
+                </Card.Body>
+              </Card.Container>
             </Flex>
-          }
+            <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "50%"}>
+              <Card.Container>
+                <Card.Title>Side Gate</Card.Title>
+                <Card.Body>
+                  {/* <Viewer ref={viewerRefLB} port={9998} /> */}
+                </Card.Body>
+              </Card.Container>
+            </Flex>
+          </Flex>
         </Container >
       </Zindex>
 

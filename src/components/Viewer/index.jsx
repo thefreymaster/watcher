@@ -11,7 +11,7 @@ const Viewer = (props) => {
         }
     }, [wrapper]);
     return (
-        <div className="viewer-wrapper" ref={ref => setWrapper(ref)}></div>
+        <div style={{borderRadius: "0px 0px 8px 8px"}} className={`viewer-wrapper`} ref={ref => setWrapper(ref)}></div>
     )
 }
 
