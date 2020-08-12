@@ -6,7 +6,7 @@ const Title = () => {
     const { brand, isDay } = React.useContext(Context);
 
     return (
-        <div style={{ fontFamily: "'Sora', sans-serif", color: isDay ? COLOR : COLOR_BRIGHT, width: '100%', textAlign: 'center' }}>{brand.title}</div>
+        <div style={{ fontFamily: "'Sora', sans-serif", color: isDay ? COLOR : COLOR_BRIGHT, width: '100%', textAlign: 'center' }}>Watcher</div>
     )
 };
 

@@ -22,7 +22,7 @@ const ThemeToggle = () => {
                 borderRadius: 100,
                 position: 'absolute',
                 bottom: '50px',
-                right: '50px',
+                left: '80px',
             }}
             className="navigation-button show-zoom-animation"
         />

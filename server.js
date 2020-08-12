@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const environment = app.get('env');
 const axios = require('axios');
+const Stream = require('node-rtsp-stream');
 
 const BASE_URL = "https://evanfreymiller-2020.firebaseio.com/";
 
@@ -51,6 +52,26 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, "/build", "index.html"));
   });
 }
+
+stream = new Stream({
+  name: 'name',
+  streamUrl: 'rtsp://skynet:xboxxbox@192.168.124.151/live',
+  wsPort: 9999,
+  ffmpegOptions: { // options ffmpeg flags
+    '-stats': '', // an option with no neccessary value uses a blank string
+    '-r': 30 // options with required values specify the value after the key
+  }
+})
+
+stream2 = new Stream({
+  name: 'name',
+  streamUrl: 'rtsp://skynet:xboxxbox@192.168.124.174/live',
+  wsPort: 9998,
+  ffmpegOptions: { // options ffmpeg flags
+    '-stats': '', // an option with no neccessary value uses a blank string
+    '-r': 30 // options with required values specify the value after the key
+  }
+})
 
 const port = process.env.PORT || 9900
 app.listen(port, () => {

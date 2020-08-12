@@ -13,6 +13,7 @@ import Loader from './components/Loader';
 import Zindex from './common/Zindex';
 import Title from './components/Title';
 import ThemeToggle from './components/ThemeToggle';
+import Viewer from './components/Viewer';
 
 const App = () => {
   const { fetching, isDay } = React.useContext(Context);
@@ -20,6 +21,7 @@ const App = () => {
   const [delay, setDelay] = React.useState(true);
   const [isExiting, setIsExiting] = React.useState(false);
 
+  const viewerRef = React.createRef();
 
   setTimeout(() => {
     setIsExiting(true);
@@ -49,22 +51,23 @@ const App = () => {
                 </Flex>
               </Flex>
               <Flex width="100%" height="33%"></Flex>
-              <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%"></Flex>
+              <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%">
+                {!delay && <ThemeToggle />}
+              </Flex>
             </Flex>
           }
           <VerticalBar />
-          <Flex direction="column" maxWidth={isMobile ? "100%" : "30%"}>
+          <Flex direction="column" maxWidth={isMobile ? "100%" : "43%"}>
             <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER, backgroundImage: getStripes(isDay) }} width="100%" height={isMobile ? "25%" : "33%"}>
-              {!delay && <Navigation.Mobile />}
+              <Viewer ref={viewerRef} port={9999} />
             </Flex>
             <Flex alignItems="center" justifyContent="center" width="100%" height={isMobile ? "50%" : "33%"}>
-              <Branding />
+              <Viewer ref={viewerRef} port={9998} />
             </Flex>
             <Flex justifyContent="center" alignItems={isMobile ? "center" : "flex-end"} width="100%" style={{
               borderTop: isDay ? BORDER_BRIGHT : BORDER,
               backgroundImage: getStripes(isDay)
             }} height="33%">
-              {isMobile && <Blurb />}
               {!isMobile && !delay && <div style={{ color: '#ffffff24', fontSize: 10, position: 'fixed', bottom: 10 }}>EvanFreymiller.com. Copyright 2020. All rights reserved.</div>}
             </Flex>
           </Flex>
@@ -72,17 +75,17 @@ const App = () => {
           {
             !isMobile
             &&
-            <Flex style={{ backgroundImage: isDay ? STRIPES_BRIGHT : STRIPES }} direction="column" maxWidth="53%">
+            <Flex direction="column" maxWidth="43%">
               <Flex style={{ borderBottom: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height={isMobile ? "25%" : "33%"}>
                 <Flex alignItems="center" height="30px" width="100%" margin={"30px 30px 30px 30px"}>
-                  <Navigation.Desktop />
+
                 </Flex>
               </Flex>
               <Flex justifyContent="center" alignItems="center" width="100%" height="33%">
-                <Blurb />
+
               </Flex>
               <Flex style={{ borderTop: isDay ? BORDER_BRIGHT : BORDER }} width="100%" height="33%">
-              {!delay && <ThemeToggle />}
+
               </Flex>
             </Flex>
           }

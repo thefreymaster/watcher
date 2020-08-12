@@ -10,7 +10,7 @@ const Branding = (props) => {
     }
     return (
         <div className={classNames("text-color-animation", {"text-color-animation-fast": props.fastAnimation})} style={inline}>
-            EJF
+            WATCHER
         </div>
     )
 }
